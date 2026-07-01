@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3561397161515502078}
+  - component: {fileID: 6326399366071498874}
   m_Layer: 0
   m_Name: Street
   m_TagString: Untagged
@@ -37,6 +38,18 @@ Transform:
   - {fileID: 2812427904071268303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6326399366071498874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558143417179014534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8d0e9f9ef3a3042800aac1b6ddba4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoadScroller
 --- !u!1 &1335664533416460257
 GameObject:
   m_ObjectHideFlags: 0
