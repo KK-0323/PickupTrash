@@ -50,6 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8d0e9f9ef3a3042800aac1b6ddba4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoadScroller
+  scrSpeed: 10
+  destroyZ: -20
+  roadPrefab: {fileID: 558143417179014534}
+  roadLength: 1
 --- !u!1 &1335664533416460257
 GameObject:
   m_ObjectHideFlags: 0

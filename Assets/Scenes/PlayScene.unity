@@ -818,6 +818,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6326399366071498874, guid: da42db82843900846aea1e4828df85d3, type: 3}
+      propertyPath: roadLength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326399366071498874, guid: da42db82843900846aea1e4828df85d3, type: 3}
+      propertyPath: roadPrefab
+      value: 
+      objectReference: {fileID: 558143417179014534, guid: da42db82843900846aea1e4828df85d3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
