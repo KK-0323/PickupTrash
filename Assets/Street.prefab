@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoadScroller
   scrSpeed: 10
   destroyZ: -20
-  roadPrefab: {fileID: 558143417179014534}
-  roadLength: 1
+  roadPrefab: {fileID: 0}
+  roadLength: 30
 --- !u!1 &1335664533416460257
 GameObject:
   m_ObjectHideFlags: 0
