@@ -2,32 +2,60 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed = 4.0f;
+    [SerializeField] private float rotateSpeed = 10.0f;
+    [SerializeField] private Transform cameraTransform;
+
     private Animator animator;
-    //public float leftX = -2.0f;
-    //public float rightX = 2.0f;
+    private Rigidbody rb;
 
     void Start()
     {
         Application.targetFrameRate = 60;
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+
+        if (cameraTransform == null && Camera.main != null)
+        {
+            cameraTransform = Camera.main.transform;
+        }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // キーボード操作(デバッグ用)
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        bool isMoving = (horizontal != 0 || vertical != 0);
+        Vector3 inputDir = new Vector3(horizontal, 0f, vertical).normalized;
 
-        animator.SetBool("IsWalking", isMoving);
-        //if(Input.GetKeyDown(KeyCode.A))
-        //{
-        //    this.transform.Translate(leftX, 0.0f, 0.0f);
-        //}
-        //if(Input.GetKeyDown(KeyCode.D))
-        //{
-        //    this.transform.Translate(rightX, 0.0f, 0.0f);
-        //}
+        if (inputDir.magnitude >= 0.1f)
+        {
+            // カメラの前方・右方方向を取得
+            Vector3 cameraForward = cameraTransform.forward;
+            Vector3 cameraRight = cameraTransform.right;
+            cameraForward.y = 0f;
+            cameraRight.y = 0f;
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+
+            // 移動方向を計算
+            Vector3 moveDirection = cameraForward * inputDir.z + cameraRight * inputDir.x;
+
+            // キャラ回転
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+
+            // Rigidbodyによる物理移動
+            Vector3 nextPosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(nextPosition);
+
+            // 歩きアニメーション再生
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            // 静止アニメーション再生
+            animator.SetBool("IsWalking", false);
+        }
     }
 }
