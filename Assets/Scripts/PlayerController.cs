@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
             // キャラ回転
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.fixedDeltaTime);
 
             // Rigidbodyによる物理移動
             Vector3 nextPosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
