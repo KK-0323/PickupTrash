@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
     {
         currentTimer = timeLimit;
         UpdateScoreUI();
+
+        // サブモニターも使うようにする
+        if(Display.displays.Length > 1)
+        {
+            Display.displays[1].Activate();
+        }
     }
 
     void Update()

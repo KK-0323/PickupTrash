@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,31 +9,29 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private Rigidbody rb;
+    private Vector2 inputVector;
 
     void Start()
     {
         Application.targetFrameRate = 60;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+    }
 
-        if (cameraTransform == null && Camera.main != null)
-        {
-            cameraTransform = Camera.main.transform;
-        }
+    public void OnMove(InputValue value)
+    {
+        inputVector = value.Get<Vector2>();
     }
 
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 inputDir = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 inputDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
 
         if (inputDir.magnitude >= 0.1f)
         {
             // カメラの前方・右方方向を取得
-            Vector3 cameraForward = cameraTransform.forward;
-            Vector3 cameraRight = cameraTransform.right;
+            Vector3 cameraForward = cameraTransform != null ? cameraTransform.forward : Vector3.forward;
+            Vector3 cameraRight = cameraTransform != null ? cameraTransform.right : Vector3.right;
             cameraForward.y = 0f;
             cameraRight.y = 0f;
             cameraForward.Normalize();
