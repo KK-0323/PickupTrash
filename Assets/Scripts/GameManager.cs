@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class GameManager : MonoBehaviour
     [Header("制限時間")]
     [SerializeField] private float timeLimit = 180.0f;
 
-    [Header("UI要素")]
-    [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [Header("1P UI")]
+    [SerializeField] private TextMeshProUGUI timerText1P;
+    [SerializeField] private TextMeshProUGUI scoreText1P;
+
+    [Header("2P UI")]
+    [SerializeField] private TextMeshProUGUI timerText2P;
+    [SerializeField] private TextMeshProUGUI scoreText2P;
 
     private float currentTimer;
     private int collectedCount = 0;
@@ -67,23 +72,52 @@ public class GameManager : MonoBehaviour
 
     private void UpdateTimerUI()
     {
-        if (timerText == null) return;
-
         // 分：秒のフォーマットへ変換
         int minutes = Mathf.FloorToInt(currentTimer / 60F);
         int seconds = Mathf.FloorToInt(currentTimer % 60F);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        // テキスト更新
+        if (timerText1P != null)
+        {
+            timerText1P.text = timeString;
+        }
+        if (timerText2P != null)
+        {
+            timerText2P.text = timeString;
+        }
     }
 
     private void UpdateScoreUI()
     {
-        if (scoreText == null) return;
-        scoreText.text = "ゴミ回収数: " + collectedCount;
+        
+        string scoreString = "ゴミ回収数: " + collectedCount;
+
+        if (scoreText1P != null)
+        {
+            scoreText1P.text = scoreString;
+        }
+        if (scoreText2P != null)
+        {
+            scoreText2P.text = scoreString;
+        }
     }
 
     private void GameOver()
     {
         IsGameOver = true;
         Debug.Log("ゲーム終了！");
+
+        StartCoroutine(ChangeToResult());
+    }
+
+    private IEnumerator ChangeToResult()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        SceneManager.LoadScene("ResultScene");
     }
 }

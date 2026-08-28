@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
+        {
+            animator.SetBool("IsWalking", false);
+            return;
+        }
+
         Vector3 inputDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
 
         if (inputDir.magnitude >= 0.1f)
