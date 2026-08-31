@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("制限時間")]
+    [Header("ゲーム設定")]
     [SerializeField] private float timeLimit = 180.0f;
+    [SerializeField] private int targetScore = 500;
 
     [Header("1P UI")]
     [SerializeField] private TextMeshProUGUI timerText1P;
@@ -19,8 +20,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText2P;
 
     private float currentTimer;
-    private int collectedCount = 0;
+    private int currentScore = 0;
     public bool IsGameOver { get; private set; } = false;
+
+    public static bool IsGameCleared { get; private set; } = false;
+    public static int FinalScore { get; private set; } = 0;
 
     private void Awake()
     {
@@ -56,7 +60,7 @@ public class GameManager : MonoBehaviour
         if(currentTimer <= 0)
         {
             currentTimer = 0;
-            GameOver();
+            FinishGame();
         }
 
         UpdateTimerUI();
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if (IsGameOver) return;
 
-        collectedCount += amount;
+        currentScore += amount;
         UpdateScoreUI();
     }
 
@@ -91,7 +95,7 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         
-        string scoreString = "ゴミ回収数: " + collectedCount;
+        string scoreString = $"SCORE: {currentScore} / {targetScore}";
 
         if (scoreText1P != null)
         {
@@ -103,10 +107,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    private void FinishGame()
     {
         IsGameOver = true;
         Debug.Log("ゲーム終了！");
+
+        IsGameCleared = currentScore >= targetScore;
+        FinalScore = currentScore;
+
+        Debug.Log(IsGameCleared ? $"クリア！ スコア: {currentScore}" : $"ゲームオーバー... スコア: {currentScore}");
 
         StartCoroutine(ChangeToResult());
     }

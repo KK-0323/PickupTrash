@@ -12,12 +12,20 @@ public class PlayerItemCollector : MonoBehaviour
 
     private void Collect(GameObject trashObject)
     {
-        Debug.Log("ゴミを取得しました: " + trashObject.name);
+        int scoreToAdd = 0;
+
+        TrashItem trashItem = trashObject.GetComponent<TrashItem>();
+        if(trashItem != null)
+        {
+            scoreToAdd = trashItem.ScoreValue;
+        }
+        
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.AddScore(1);
+            GameManager.Instance.AddScore(scoreToAdd);
         }
 
+        Debug.Log(trashObject.name + "を取得しました");
         Destroy(trashObject);
     }
 }

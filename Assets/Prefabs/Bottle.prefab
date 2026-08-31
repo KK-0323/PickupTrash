@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f723d3c5c4feb3438f58f736c827daa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8276980642444010634}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f723d3c5c4feb3438f58f736c827daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3991323320340705825}
   m_SourcePrefab: {fileID: 100100000, guid: 3f723d3c5c4feb3438f58f736c827daa, type: 3}
 --- !u!1 &4726376023165430504 stripped
 GameObject:
@@ -103,3 +106,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6121590469811200223, guid: 3f723d3c5c4feb3438f58f736c827daa, type: 3}
+--- !u!114 &-3991323320340705825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4726376023165430504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155230ff54c88324e9709ee45913c4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashItem
+  scoreValue: 10

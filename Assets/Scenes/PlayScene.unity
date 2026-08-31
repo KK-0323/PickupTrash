@@ -6405,7 +6405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u53D6\u5F97\u6570:0"
+  m_text: Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cf02b238e01a7942912ddc759ebc573, type: 2}
   m_sharedMaterial: {fileID: -5647962430031990017, guid: 1cf02b238e01a7942912ddc759ebc573, type: 2}
@@ -6501,8 +6501,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -30}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 280, y: -30}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &575339927
 GameObject:
@@ -18374,6 +18374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   timeLimit: 5
+  targetScore: 0
   timerText1P: {fileID: 171326480}
   scoreText1P: {fileID: 567275921}
   timerText2P: {fileID: 1866419115}
@@ -20895,8 +20896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -30}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 280, y: -30}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982092119
 MonoBehaviour:
@@ -20918,7 +20919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u53D6\u5F97\u6570:0"
+  m_text: Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cf02b238e01a7942912ddc759ebc573, type: 2}
   m_sharedMaterial: {fileID: -5647962430031990017, guid: 1cf02b238e01a7942912ddc759ebc573, type: 2}
