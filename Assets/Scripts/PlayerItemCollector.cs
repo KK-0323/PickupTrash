@@ -17,7 +17,7 @@ public class PlayerItemCollector : MonoBehaviour
         TrashItem trashItem = trashObject.GetComponent<TrashItem>();
         if(trashItem != null)
         {
-            scoreToAdd = trashItem.ScoreValue;
+            scoreToAdd = trashItem.scoreVal;
         }
         
         if (GameManager.Instance != null)

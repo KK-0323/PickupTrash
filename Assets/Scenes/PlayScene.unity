@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   target: {fileID: 2007158339}
-  mouseSensitivity: 2
+  lookSensitivity: 1
   yMinLimit: -20
   yMaxLimit: 60
 --- !u!1001 &219482133
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   target: {fileID: 501213870}
-  mouseSensitivity: 2
+  lookSensitivity: 1
   yMinLimit: -20
   yMaxLimit: 60
 --- !u!1001 &259174053
@@ -5378,7 +5378,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &501213866
 CapsuleCollider:
@@ -5427,9 +5427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d88728f867bc14e9ee26991c6a3fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 4
+  moveSpeed: 8
   rotateSpeed: 10
   cameraTransform: {fileID: 346322840}
+  cameraController: {fileID: 256099506}
 --- !u!95 &501213869
 Animator:
   serializedVersion: 7
@@ -6593,7 +6594,7 @@ Canvas:
   m_GameObject: {fileID: 575339927}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1406836613}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -9708,13 +9709,13 @@ PrefabInstance:
       addedObject: {fileID: 501213867}
     - targetCorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 501213864}
+    - targetCorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 501213866}
     - targetCorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
       insertIndex: -1
       addedObject: {fileID: 501213865}
-    - targetCorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 501213864}
   m_SourcePrefab: {fileID: 100100000, guid: a168964764ff0eb40934c99bb292c446, type: 3}
 --- !u!4 &919375138 stripped
 Transform:
@@ -11141,10 +11142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eab5806818826944ab3658cead394f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashSpwner
-  trashPrefabs:
-  - {fileID: 4726376023165430504, guid: 4cb307622a67dc74e829402bc170b8e0, type: 3}
-  - {fileID: 646174293540160057, guid: 8573895cfcbcf0743b78c011e046cc5d, type: 3}
-  - {fileID: 6045373953416112058, guid: 4185b328d4b08204bb929ff34f16a956, type: 3}
   respawnDelay: 5
 --- !u!4 &1039041115
 Transform:
@@ -13015,10 +13012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eab5806818826944ab3658cead394f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashSpwner
-  trashPrefabs:
-  - {fileID: 4726376023165430504, guid: 4cb307622a67dc74e829402bc170b8e0, type: 3}
-  - {fileID: 646174293540160057, guid: 8573895cfcbcf0743b78c011e046cc5d, type: 3}
-  - {fileID: 6045373953416112058, guid: 4185b328d4b08204bb929ff34f16a956, type: 3}
   respawnDelay: 5
 --- !u!4 &1203390190
 Transform:
@@ -13121,10 +13114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eab5806818826944ab3658cead394f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashSpwner
-  trashPrefabs:
-  - {fileID: 4726376023165430504, guid: 4cb307622a67dc74e829402bc170b8e0, type: 3}
-  - {fileID: 646174293540160057, guid: 8573895cfcbcf0743b78c011e046cc5d, type: 3}
-  - {fileID: 6045373953416112058, guid: 4185b328d4b08204bb929ff34f16a956, type: 3}
   respawnDelay: 5
 --- !u!4 &1211988110
 Transform:
@@ -13716,7 +13705,7 @@ Canvas:
   m_GameObject: {fileID: 1279924634}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 346322842}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -15919,6 +15908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1501089695}
+  - component: {fileID: 1501089696}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Untagged
@@ -15945,6 +15935,27 @@ Transform:
   - {fileID: 2086128449}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1501089696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501089694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcb71bc63ab7b24fa6015224f512c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashManager
+  trashPrefabs:
+  - {fileID: 4726376023165430504, guid: 4cb307622a67dc74e829402bc170b8e0, type: 3}
+  - {fileID: 646174293540160057, guid: 8573895cfcbcf0743b78c011e046cc5d, type: 3}
+  - {fileID: 6045373953416112058, guid: 4185b328d4b08204bb929ff34f16a956, type: 3}
+  - {fileID: 7674373047706971284, guid: f47a03c032a1222439f9237682917691, type: 3}
+  - {fileID: 184266143259479990, guid: 95028bade9f5e6347ad219828b1e9c7a, type: 3}
+  - {fileID: 4748187075595739728, guid: 4e818964a7208234683e87c5b4af1913, type: 3}
+  - {fileID: 327855116534747814, guid: 7ac33b16d745102459e4e1bed9b5bc38, type: 3}
+  respawnDelay: 5
 --- !u!4 &1505586297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d34e8533c8de8ec45869f9144584d929, type: 3}
@@ -18373,8 +18384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1575b86359a3542a0b8c83a657c1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  timeLimit: 5
-  targetScore: 0
+  transitionToResult: 0
+  timeLimit: 180
+  targetScore: 500
   timerText1P: {fileID: 171326480}
   scoreText1P: {fileID: 567275921}
   timerText2P: {fileID: 1866419115}
@@ -21309,13 +21321,13 @@ PrefabInstance:
       addedObject: {fileID: 2007158342}
     - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2007158343}
+    - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2007158341}
     - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2007158340}
-    - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2007158343}
   m_SourcePrefab: {fileID: 100100000, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
 --- !u!1 &2007158335 stripped
 GameObject:
@@ -21356,9 +21368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d88728f867bc14e9ee26991c6a3fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 10
+  moveSpeed: 8
   rotateSpeed: 10
   cameraTransform: {fileID: 1406836614}
+  cameraController: {fileID: 215274216}
 --- !u!4 &2007158339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6125467769402437037, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
@@ -21389,7 +21402,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &2007158341
 CapsuleCollider:
@@ -21971,10 +21984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eab5806818826944ab3658cead394f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashSpwner
-  trashPrefabs:
-  - {fileID: 4726376023165430504, guid: 4cb307622a67dc74e829402bc170b8e0, type: 3}
-  - {fileID: 646174293540160057, guid: 8573895cfcbcf0743b78c011e046cc5d, type: 3}
-  - {fileID: 6045373953416112058, guid: 4185b328d4b08204bb929ff34f16a956, type: 3}
   respawnDelay: 5
 --- !u!4 &2086128449
 Transform:

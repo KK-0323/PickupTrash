@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("デバッグ")]
+    [SerializeField] private bool transitionToResult = true;
+
     [Header("ゲーム設定")]
     [SerializeField] private float timeLimit = 180.0f;
     [SerializeField] private int targetScore = 500;
@@ -117,7 +120,14 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(IsGameCleared ? $"クリア！ スコア: {currentScore}" : $"ゲームオーバー... スコア: {currentScore}");
 
-        StartCoroutine(ChangeToResult());
+        if(transitionToResult)
+        {
+            StartCoroutine(ChangeToResult());
+        }
+        else
+        {
+            Debug.Log("シーン遷移はスキップした");
+        }
     }
 
     private IEnumerator ChangeToResult()

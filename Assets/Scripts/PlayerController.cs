@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 4.0f;
     [SerializeField] private float rotateSpeed = 10.0f;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private CameraController cameraController;
 
     private Animator animator;
     private Rigidbody rb;
@@ -21,6 +22,23 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         inputVector = value.Get<Vector2>();
+    }
+
+    public void OnLook(InputValue value)
+    {
+        if(GameManager.Instance != null && GameManager.Instance.IsGameOver)
+        {
+            if (cameraController != null)
+            {
+                cameraController.SetLookInput(Vector2.zero);
+            }
+            return;
+        }
+
+        if (cameraController != null)
+        {
+            cameraController.SetLookInput(value.Get<Vector2>());
+        }
     }
 
     void FixedUpdate()

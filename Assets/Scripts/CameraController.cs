@@ -1,32 +1,47 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform target; // 追従対象
-    [SerializeField] private float mouseSensitivity = 2.0f;
+    [SerializeField] private float lookSensitivity = 2.0f;
     [SerializeField] private float yMinLimit = -20f;
     [SerializeField] private float yMaxLimit = 60f;
 
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
+    private Vector2 lookInput;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        rotationX = 0.0f;
+        // 初期角度をプレイヤーの向きにする
+        if (target != null)
+        {
+            rotationX = target.eulerAngles.y;
+        }
+        else
+        {
+            rotationX = 0.0f;
+        }
+
         rotationY = 0.0f;
     }
 
-    // Update is called once per frame
+    public void SetLookInput(Vector2 input)
+    {
+        lookInput = input;
+    }
+
     void LateUpdate()
     {
         if (target == null) return;
 
-        // マウスの移動量取得
-        rotationX += Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotationY -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        // スティックの移動量取得
+        rotationX += lookInput.x * lookSensitivity;
+        rotationY -= lookInput.y * lookSensitivity;
         rotationY = Mathf.Clamp(rotationY, yMinLimit, yMaxLimit);
 
         // カメラホルダーの回転と位置の設定
