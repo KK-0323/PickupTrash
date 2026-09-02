@@ -2535,10 +2535,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   bgmSource: {fileID: 219936355}
   seSource: {fileID: 219936354}
-  mainBGM: {fileID: 0}
+  mainBGM: {fileID: 8300000, guid: 6efa18fad7e1bc34dbe871190fa093ab, type: 3}
   collectSE: {fileID: 8300000, guid: 58fae29822b4ab449ae6b48ccc89648b, type: 3}
   gameStartSE: {fileID: 0}
-  timeUpSE: {fileID: 0}
+  timeUpSE: {fileID: 8300000, guid: 73b819d36b087a9428b016826e4926ff, type: 3}
 --- !u!82 &219936354
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2649,7 +2649,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.142
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -18620,8 +18620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1575b86359a3542a0b8c83a657c1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  transitionToResult: 0
-  timeLimit: 180
+  transitionToResult: 1
+  timeLimit: 5
   targetScore: 500
   timerText1P: {fileID: 171326480}
   scoreText1P: {fileID: 567275921}
@@ -22809,7 +22809,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1690138284}
-  - {fileID: 1757793953}
   - {fileID: 1009767927}
   - {fileID: 1501089695}
   - {fileID: 1068857124}
@@ -22817,3 +22816,4 @@ SceneRoots:
   - {fileID: 722253468}
   - {fileID: 744058656}
   - {fileID: 219936356}
+  - {fileID: 1757793953}
