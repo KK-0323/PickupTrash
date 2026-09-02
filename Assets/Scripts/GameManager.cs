@@ -115,6 +115,12 @@ public class GameManager : MonoBehaviour
         IsGameOver = true;
         Debug.Log("ゲーム終了！");
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.stopBGM();
+            AudioManager.Instance.playTimeUpSE();
+        }
+
         IsGameCleared = currentScore >= targetScore;
         FinalScore = currentScore;
 

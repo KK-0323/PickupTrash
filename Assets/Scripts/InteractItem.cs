@@ -6,7 +6,11 @@ public class InteractItem : MonoBehaviour
 
     void Start()
     {
-        parentTrash = GetComponent<TrashItem>();
+        parentTrash = GetComponentInParent<TrashItem>();
+        if(parentTrash == null )
+        {
+            Debug.LogError("TrashItemが見つかりません");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
