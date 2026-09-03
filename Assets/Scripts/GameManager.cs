@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("ゲーム設定")]
     [SerializeField] private float timeLimit = 180.0f;
     [SerializeField] private int targetScore = 500;
+    [SerializeField] private float startDelay = 3.0f;
 
     [Header("1P UI")]
     [SerializeField] private TextMeshProUGUI timerText1P;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     private float currentTimer;
     private int currentScore = 0;
     public bool IsGameOver { get; private set; } = false;
+    public bool CanControl { get; private set; } = false;
 
     public static bool IsGameCleared { get; private set; } = false;
     public static int FinalScore { get; private set; } = 0;
@@ -47,15 +49,34 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
 
         // サブモニターも使うようにする
-        if(Display.displays.Length > 1)
+        if (Display.displays.Length > 1)
         {
             Display.displays[1].Activate();
         }
+
+        StartCoroutine(StartGameRoutine());
+    }
+
+    private IEnumerator StartGameRoutine()
+    {
+        CanControl = false;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.playStartSE();
+        }
+
+        yield return new WaitForSeconds(startDelay);
+
+        CanControl = true;
     }
 
     void Update()
     {
-        if (IsGameOver) return;
+        if (IsGameOver || !CanControl)
+        {
+            return;
+        }
 
         // タイマー減算
         currentTimer -= Time.deltaTime;

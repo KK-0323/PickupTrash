@@ -72,6 +72,11 @@ public class AudioManager : MonoBehaviour
         playSE(collectSE);
     }
 
+    public void playStartSE()
+    {
+        playSE(gameStartSE);
+    }
+
     public void playTimeUpSE()
     {
         playSE(timeUpSE);
