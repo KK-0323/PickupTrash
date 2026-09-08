@@ -27,6 +27,10 @@ public class PlayerAssign : MonoBehaviour
         {
             secondInput.SwitchCurrentControlScheme("Gamepad", gamepads[1]);
         }
+        else if (Keyboard.current != null)
+        {
+            secondInput.SwitchCurrentControlScheme("Keyboard", Keyboard.current);
+        }
         else
         {
             Debug.LogWarning("2Pのコントローラーが接続されていません");

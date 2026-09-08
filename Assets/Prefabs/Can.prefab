@@ -52,8 +52,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 0.5
+  m_Radius: 0.3
+  m_Height: 0.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4868463559595547591
@@ -78,15 +78,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 508a2ec75f89b704cb7070a99697e019, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508a2ec75f89b704cb7070a99697e019, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508a2ec75f89b704cb7070a99697e019, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508a2ec75f89b704cb7070a99697e019, type: 3}
       propertyPath: m_LocalPosition.x
@@ -225,5 +225,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashItem
   scoreValue: 10
-  collectSE: {fileID: 8300000, guid: 58fae29822b4ab449ae6b48ccc89648b, type: 3}
-  seVolume: 0.8
