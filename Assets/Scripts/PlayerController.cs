@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotateSpeed = 10.0f;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private CameraController cameraController;
-    [SerializeField] private int playerIndex = 0;
 
     private Animator animator;
     private Rigidbody rb;
@@ -20,15 +18,14 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        SetGamepad();
     }
 
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        inputVector = value.Get<Vector2>();
+        inputVector = context.ReadValue<Vector2>();
     }
 
-    public void OnLook(InputValue value)
+    public void OnLook(InputAction.CallbackContext context)
     {
         if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
         {
@@ -41,18 +38,18 @@ public class PlayerController : MonoBehaviour
 
         if (cameraController != null)
         {
-            cameraController.SetLookInput(value.Get<Vector2>());
+            cameraController.SetLookInput(context.ReadValue<Vector2>());
         }
     }
 
-    public void OnCollect(InputValue value)
+    public void OnCollect(InputAction.CallbackContext context)
     {
         if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
         {
             return;
         }
 
-        if (value.isPressed && targetTrash != null)
+        if (context.started && targetTrash != null)
         {
             if(targetTrash.TryCollect())
             {
@@ -125,37 +122,6 @@ public class PlayerController : MonoBehaviour
                 trash.SetPlayerInRange(false);
                 targetTrash = null;
             }
-        }
-    }
-
-    private void SetGamepad()
-    {
-        PlayerInput playerInput = GetComponent<PlayerInput>();
-        if (playerInput == null)
-        {
-            return;
-        }
-
-        if (!playerInput.user.valid)
-        {
-            return;
-        }
-
-        var gamepads = Gamepad.all;
-
-        if (gamepads.Count > playerIndex)
-        {
-            // 自動切り替え無効化
-            playerInput.neverAutoSwitchControlSchemes = true;
-
-            // ペアリング
-            playerInput.user.UnpairDevices();
-            InputUser.PerformPairingWithDevice(gamepads[playerIndex], playerInput.user);
-            Debug.Log($"Player{playerIndex + 1}にGamepad[{playerIndex}] ({gamepads[playerIndex].displayName})を割り当てました");
-        }
-        else
-        {
-            Debug.LogWarning($"Player{playerIndex + 1}: 対応するコントローラーが見つかりません (接続数: {gamepads.Count})");
         }
     }
 }
