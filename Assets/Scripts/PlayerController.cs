@@ -107,7 +107,6 @@ public class PlayerController : MonoBehaviour
             if (trash != null)
             {
                 targetTrash = trash;
-                trash.SetPlayerInRange(true);
             }
         }
     }
@@ -119,7 +118,6 @@ public class PlayerController : MonoBehaviour
             TrashItem trash = other.GetComponentInParent<TrashItem>();
             if(trash != null && trash == targetTrash)
             {
-                trash.SetPlayerInRange(false);
                 targetTrash = null;
             }
         }

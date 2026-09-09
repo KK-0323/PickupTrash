@@ -219,7 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155230ff54c88324e9709ee45913c4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashItem
-  scoreValue: 10
+  scoreValue: 50
+  playerCount: 2
 --- !u!4 &704098350553404684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b966d421706519f43a87885860b98d28, type: 3}

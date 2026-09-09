@@ -17579,9 +17579,9 @@ MonoBehaviour:
   - {fileID: 646174293540160057, guid: 8573895cfcbcf0743b78c011e046cc5d, type: 3}
   - {fileID: 6045373953416112058, guid: 4185b328d4b08204bb929ff34f16a956, type: 3}
   - {fileID: 7674373047706971284, guid: f47a03c032a1222439f9237682917691, type: 3}
-  - {fileID: 184266143259479990, guid: 95028bade9f5e6347ad219828b1e9c7a, type: 3}
   - {fileID: 4748187075595739728, guid: 4e818964a7208234683e87c5b4af1913, type: 3}
   - {fileID: 327855116534747814, guid: 7ac33b16d745102459e4e1bed9b5bc38, type: 3}
+  - {fileID: 184266143259479990, guid: 95028bade9f5e6347ad219828b1e9c7a, type: 3}
   respawnDelay: 5
 --- !u!4 &1505586297 stripped
 Transform:
@@ -20537,7 +20537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1575b86359a3542a0b8c83a657c1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  transitionToResult: 0
+  transitionToResult: 1
   timeLimit: 180
   targetScore: 300
   startDelay: 3

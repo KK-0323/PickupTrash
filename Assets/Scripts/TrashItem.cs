@@ -1,22 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TrashItem : MonoBehaviour
 {
-    [Header("ゴミの獲得ポイント")]
+    [Header("ゴミの設定")]
     [SerializeField] private int scoreValue = 10;
+    [SerializeField] private int playerCount = 1; // ゴミの回収に必要な人数
 
-    private bool isPlayerInRange = false;
     public int scoreVal => scoreValue;
 
-    public void SetPlayerInRange(bool inRange)
+    private HashSet<GameObject> playerInRange = new HashSet<GameObject>();
+
+    public void SetPlayerInRange(GameObject player, bool inRange)
     {
-        isPlayerInRange = inRange;
+        if (player == null)
+        {
+            return;
+        }
+
+        if (inRange)
+        {
+            playerInRange.Add(player);
+        }
+        else
+        {
+            playerInRange.Remove(player);
+        }
     }
 
     public bool TryCollect()
     {
-        if (!isPlayerInRange)
+        // プレイヤーの数を判定
+        if (playerInRange.Count < playerCount)
         {
+            Debug.Log($"[大型ゴミ] 回収にはあと {playerCount - playerInRange.Count} 人必要です");
             return false;
         }
 

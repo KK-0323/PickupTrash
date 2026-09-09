@@ -17,7 +17,7 @@ public class InteractItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentTrash?.SetPlayerInRange(true);
+            parentTrash?.SetPlayerInRange(other.gameObject, true);
         }
     }
 
@@ -25,7 +25,7 @@ public class InteractItem : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            parentTrash?.SetPlayerInRange(false);
+            parentTrash?.SetPlayerInRange(other.gameObject, false);
         }
     }
 }
